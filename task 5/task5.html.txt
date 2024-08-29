@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sorter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Array Sorter</h1>
+        <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas">
+        <button onclick="sortArray()">Sort Array</button>
+        <div class="output">
+            <p id="originalArray"></p>
+            <p id="sortedArray"></p>
+        </div>
+    </div>
+
+    <script>
+        function sortArray() {
+            // Get the input value
+            const input = document.getElementById('arrayInput').value;
+            // Split the input string into an array of numbers
+            const array = input.split(',').map(num => parseFloat(num.trim()));
+            
+            // Display the original array
+            document.getElementById('originalArray').textContent = 'Original Array: ' + array.join(', ');
+
+            // Sort the array using a sorting algorithm (e.g., Bubble Sort)
+            bubbleSort(array);
+
+            // Display the sorted array
+            document.getElementById('sortedArray').textContent = 'Sorted Array: ' + array.join(', ');
+        }
+
+        // Bubble Sort Algorithm
+        function bubbleSort(arr) {
+            const n = arr.length;
+            for (let i = 0; i < n - 1; i++) {
+                for (let j = 0; j < n - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        // Swap elements
+                        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
